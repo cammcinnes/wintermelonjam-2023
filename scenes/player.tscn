@@ -81,8 +81,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wki00"]
 
-[node name="player" type="Area2D"]
-scale = Vector2(3, 3)
+[node name="player" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_8qk5e")
 speed = 200
 metadata/_edit_group_ = true
@@ -90,7 +90,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_11k4b")
 animation = &"idle"
-frame_progress = 0.878666
+frame_progress = 0.38972
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
