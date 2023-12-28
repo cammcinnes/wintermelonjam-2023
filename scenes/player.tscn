@@ -82,7 +82,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wki00"]
 
 [node name="player" type="CharacterBody2D"]
-scale = Vector2(2, 2)
 collision_layer = 3
 script = ExtResource("1_8qk5e")
 speed = 200

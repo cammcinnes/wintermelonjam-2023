@@ -219,6 +219,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4uk6"]
+radius = 21.9021
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f75q3"]
 radius = 11.0
@@ -229,7 +230,7 @@ script = ExtResource("1_52od5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1tgvx")
 animation = &"mad"
-frame_progress = 0.865842
+frame_progress = 0.242448
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 2
