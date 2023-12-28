@@ -83,6 +83,7 @@ animations = [{
 
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(2, 2)
+collision_layer = 3
 script = ExtResource("1_8qk5e")
 speed = 200
 metadata/_edit_group_ = true
