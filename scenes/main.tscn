@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://byh5danmly2j4"]
+[gd_scene load_steps=8 format=3 uid="uid://byh5danmly2j4"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_0tnjh"]
 [ext_resource type="PackedScene" uid="uid://c564ni2iq5e7f" path="res://scenes/player.tscn" id="1_x8416"]
+[ext_resource type="Shader" path="res://scripts/main.gdshader" id="3_31mik"]
 [ext_resource type="Texture2D" uid="uid://bxlkvgyotjhup" path="res://textures/basic_tileset_and_assets_standard/water_and_island_tiles_v2.png" id="3_33odw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21oic"]
+resource_local_to_scene = true
+shader = ExtResource("3_31mik")
+shader_parameter/fade_speed = 0.01
+shader_parameter/exclude_tile_coordinates = Vector2(320, 180)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wbkq"]
 texture = ExtResource("3_33odw")
@@ -353,6 +360,7 @@ position = Vector2(320, 180)
 position = Vector2(320, 33)
 
 [node name="TileMap" type="TileMap" parent="."]
+material = SubResource("ShaderMaterial_21oic")
 position = Vector2(320, 180)
 tile_set = SubResource("TileSet_5ln0g")
 format = 2

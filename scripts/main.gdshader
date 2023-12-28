@@ -1,6 +1,6 @@
 shader_type canvas_item;
-uniform float fade_speed : hint_range(0.0, 1.0) = 0.01;
-uniform vec2 exclude_tile_coordinates = vec2(320,180);
+uniform float fade_speed;
+uniform vec2 exclude_tile_coordinates;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
