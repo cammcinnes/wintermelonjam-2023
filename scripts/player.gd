@@ -11,10 +11,9 @@ func _ready():
 func start(pos):
 	position = pos
 	show()
-	$CollisionShape2D.disabled = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -27,10 +26,8 @@ func _process(delta):
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.stop("idle")
 		$AnimatedSprite2D.play("walk")
 	else:
-		$AnimatedSprite2D.stop("walk")
 		$AnimatedSprite2D.play("idle")
 
 	position += velocity * delta
@@ -41,9 +38,4 @@ func _process(delta):
 		$AnimatedSprite2D.flip_v = false
 		# flip the texture if walking in negative direction
 		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
-func _on_body_entered():
-	pressure.emit()
-	
+
