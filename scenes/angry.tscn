@@ -230,7 +230,7 @@ script = ExtResource("1_52od5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1tgvx")
 animation = &"mad"
-frame_progress = 0.242448
+frame_progress = 0.548632
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 2
