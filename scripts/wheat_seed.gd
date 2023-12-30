@@ -2,6 +2,7 @@ extends StaticBody2D
 
 var selected = false;
 var seed_type = 2 #wheat
+var planted = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,4 +23,10 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and not event.pressed:
 			selected = false
+	
+
+func _on_area_2d_entered(body):
+	if body.has_method("can_grow"):
+		selected = false
+		planted = true
 		

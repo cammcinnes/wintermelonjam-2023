@@ -13,6 +13,11 @@ func _process(delta):
 		$wheat_seed.visible = true
 	if $shopmenu.item4owned == true:
 		Main.game_over()
+	if $corn_seed.planted == true:
+		corn_redo()
+	if $wheat_seed.planted == true:
+		wheat_redo()
+	
 		
 func _on_area_2d_body_entered(body):
 	if body.has_method("player_shop_method"):
@@ -21,3 +26,15 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body):
 	if body.has_method("player_shop_method"):
 		$shopmenu.visible = false
+
+func corn_redo():
+	$corn_seed.position = $pickup.position
+	$corn_seed.visible = false
+	$shopmenu.item1owned = false
+	$corn_seed.planted = false
+
+func wheat_redo():
+	$wheat_seed.position = $pickup.position
+	$wheat_seed.visible = false
+	$shopmenu.item2owned = false
+	$wheat_seed.planted = false

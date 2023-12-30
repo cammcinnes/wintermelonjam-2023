@@ -78,14 +78,17 @@ shape = SubResource("RectangleShape2D_6yr8x")
 position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_tb4c4")
 
-[node name="wheat_seed" parent="." instance=ExtResource("4_heb2f")]
-position = Vector2(-1, -6)
-
-[node name="corn_seed" parent="." instance=ExtResource("5_5whsl")]
-position = Vector2(0, -5)
-
 [node name="shopmenu" parent="." instance=ExtResource("6_db0lp")]
 position = Vector2(-43, -54)
+
+[node name="pickup" type="Marker2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="wheat_seed" parent="." instance=ExtResource("4_heb2f")]
+position = Vector2(0, -4)
+
+[node name="corn_seed" parent="." instance=ExtResource("5_5whsl")]
+position = Vector2(0, -4)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -10,3 +10,7 @@ Farming Crops 16x16 by josehzz https://opengameart.org/content/farming-crops-16x
 Treasure+ by ninjikin https://ninjikin.itch.io/treasure
 NPCS Pack by srtoasty https://srtoasty.itch.io/npcs-pack-sta-toasty
 monogram font by datagoblin https://datagoblin.itch.io/monogram
+
+Music:
+
+Sunrise by Organoid https://freemusicarchive.org/music/Organoid/

@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://xaq1g1rn45ww"]
+[gd_scene load_steps=17 format=3 uid="uid://xaq1g1rn45ww"]
 
 [ext_resource type="Script" path="res://scripts/growzone.gd" id="1_v5lim"]
 [ext_resource type="Texture2D" uid="uid://dyf1tq5uyr27v" path="res://textures/Crop_Spritesheet.png" id="2_7krq1"]
 [ext_resource type="Texture2D" uid="uid://cl3dd3mom0rn3" path="res://textures/tilesets/pixil-frame-0 (3).png" id="2_gf35e"]
+[ext_resource type="Script" path="res://scripts/Area2D.gd" id="3_caocu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4dd2j"]
 atlas = ExtResource("2_gf35e")
@@ -107,6 +108,7 @@ sprite_frames = SubResource("SpriteFrames_67nns")
 animation = &"new_animation"
 
 [node name="Area2D" type="Area2D" parent="hoed_land"]
+script = ExtResource("3_caocu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hoed_land/Area2D"]
 shape = SubResource("RectangleShape2D_qx7xx")
