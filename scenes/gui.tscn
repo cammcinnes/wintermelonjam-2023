@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpqxfe6ebfb4d"]
+
+[ext_resource type="Script" path="res://scripts/gui.gd" id="1_ba3st"]
+[ext_resource type="Texture2D" uid="uid://dyf1tq5uyr27v" path="res://textures/Crop_Spritesheet.png" id="1_dfwng"]
+[ext_resource type="FontFile" uid="uid://dlfn785vfw35r" path="res://font/monogram.ttf" id="2_3mn8g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5braf"]
+atlas = ExtResource("1_dfwng")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mitdf"]
+atlas = ExtResource("1_dfwng")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s12vm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5braf")
+}],
+"loop": true,
+"name": &"corn",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mitdf")
+}],
+"loop": true,
+"name": &"wheat",
+"speed": 0.0
+}]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_ba3st")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -117.0
+offset_bottom = 39.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+
+[node name="wheat" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(75, 16)
+sprite_frames = SubResource("SpriteFrames_s12vm")
+animation = &"wheat"
+autoplay = "wheat"
+
+[node name="corn" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(19, 16)
+sprite_frames = SubResource("SpriteFrames_s12vm")
+animation = &"corn"
+autoplay = "corn"
+
+[node name="wheat_label" type="Label" parent="Control"]
+offset_left = 72.0
+offset_top = 9.0
+offset_right = 112.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("2_3mn8g")
+theme_override_font_sizes/font_size = 16
+text = ": 1"
+horizontal_alignment = 1
+
+[node name="corn_label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 9.0
+offset_right = 56.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("2_3mn8g")
+theme_override_font_sizes/font_size = 16
+text = ": 1"
+horizontal_alignment = 1

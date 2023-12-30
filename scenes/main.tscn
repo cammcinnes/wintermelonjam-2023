@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://byh5danmly2j4"]
+[gd_scene load_steps=23 format=3 uid="uid://byh5danmly2j4"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_0tnjh"]
 [ext_resource type="PackedScene" uid="uid://c564ni2iq5e7f" path="res://scenes/player.tscn" id="1_x8416"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cokkreqcbdqxr" path="res://scenes/wheat_seed.tscn" id="10_j5buc"]
 [ext_resource type="PackedScene" uid="uid://cp4u61uqr1liu" path="res://scenes/corn_seed.tscn" id="11_1so3n"]
 [ext_resource type="PackedScene" uid="uid://xaq1g1rn45ww" path="res://scenes/growzone.tscn" id="12_2jnoe"]
+[ext_resource type="PackedScene" uid="uid://bpqxfe6ebfb4d" path="res://scenes/gui.tscn" id="13_qxv7o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tk8pw"]
 texture = ExtResource("3_viwpl")
@@ -542,3 +543,5 @@ position = Vector2(398, 54)
 [node name="corn_seed" parent="." instance=ExtResource("11_1so3n")]
 
 [node name="wheat_seed" parent="." instance=ExtResource("10_j5buc")]
+
+[node name="GUI" parent="." instance=ExtResource("13_qxv7o")]

@@ -101,6 +101,7 @@ animations = [{
 
 [node name="growzone" type="StaticBody2D"]
 script = ExtResource("1_v5lim")
+metadata/_edit_group_ = true
 
 [node name="hoed_land" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_67nns")
