@@ -65,3 +65,5 @@ func update_animations():
 
 func player_sell_method():
 	pass
+func player_shop_method():
+	pass
