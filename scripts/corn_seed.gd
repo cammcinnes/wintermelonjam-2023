@@ -29,6 +29,7 @@ func _input(event):
 
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("can_grow"):
+	if body.has_method("can_grow") and not body.occupied:
 		selected = false
 		planted = true
+		body.occupied = true

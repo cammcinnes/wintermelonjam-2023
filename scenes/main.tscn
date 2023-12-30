@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://byh5danmly2j4"]
+[gd_scene load_steps=28 format=3 uid="uid://byh5danmly2j4"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_0tnjh"]
 [ext_resource type="PackedScene" uid="uid://c564ni2iq5e7f" path="res://scenes/player.tscn" id="1_x8416"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://xaq1g1rn45ww" path="res://scenes/growzone.tscn" id="12_2jnoe"]
 [ext_resource type="PackedScene" uid="uid://bpqxfe6ebfb4d" path="res://scenes/gui.tscn" id="13_qxv7o"]
 [ext_resource type="AudioStream" uid="uid://ciy3ty8ojrja" path="res://music/Organoid - Sunrise.mp3" id="14_p8owq"]
+[ext_resource type="AudioStream" uid="uid://daybtt18mkl2w" path="res://music/611608__djscreechingpossum__sleep-with-the-frogs.mp3" id="15_4bxio"]
 [ext_resource type="PackedScene" uid="uid://bulcl0h7qdvqb" path="res://scenes/shop.tscn" id="15_7x6fa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tk8pw"]
@@ -794,8 +795,10 @@ texture = ExtResource("7_ef2mr")
 10:7/0/physics_layer_0/angular_velocity = 0.0
 0:5/size_in_atlas = Vector2i(3, 4)
 0:5/0 = 0
+0:5/0/z_index = 2
 0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:5/0/physics_layer_0/angular_velocity = 0.0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14, 8, 13.5, 8, 15, 20.5, 15, 35.5, -15, 34.5, -14, 19.5)
 0:9/size_in_atlas = Vector2i(3, 4)
 0:9/0 = 0
 0:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -1195,6 +1198,7 @@ tile_set = SubResource("TileSet_gvjmf")
 format = 2
 layer_0/name = "decor"
 layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(524295, 4, 5, 196625, 4, 5, 131065, 1, 0, 131059, 1, 0, 262128, 1, 0, 65519, 1, 0, 327661, 1, 0, 393197, 1, 0, 589806, 1, 0, 655343, 1, 0, 589826, 1, 0, 262146, 1, 0, 65542, 1, 0, 65550, 1, 0, -196590, 1, 0, -458735, 1, 0, -589815, 1, 0, -393210, 1, 0, -262141, 1, 0, -196605, 1, 0, -196606, 1, 0, -131073, 1, 0, -131074, 1, 0, -327683, 1, 0, -327686, 1, 0, -262150, 1, 0, -196616, 1, 0, -131080, 1, 0, -65544, 1, 0, -65545, 1, 0, -327689, 1, 0, -655371, 1, 0, -589839, 1, 0, -589841, 1, 0, -524305, 1, 0, -524306, 1, 0, -327700, 1, 0, -131090, 1, 0, 458754, 65537, 2, 131078, 65537, 2, -327677, 65537, 2, -262147, 65537, 2, 262153, 131073, 2, 13, 131073, 2, 196602, 131073, 2, 655341, 131073, 2, -262163, 131073, 2, -589825, 131073, 2, -589808, 196609, 2, -589812, 196609, 2, 655377, 196609, 2, -65541, 196609, 0, -327679, 196609, 0, 589824, 196609, 0, -196599, 196609, 0, -458744, 196609, 0, -65528, 196609, 0, 196610, 196609, 0, -524293, 4, 5, -458748, 4, 5)
 
 [node name="start_position" type="Marker2D" parent="."]
 position = Vector2(320, 180)
@@ -1456,4 +1460,6 @@ position = Vector2(534, 126)
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_p8owq")
 volume_db = -20.0
-autoplay = true
+
+[node name="end_game" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_4bxio")

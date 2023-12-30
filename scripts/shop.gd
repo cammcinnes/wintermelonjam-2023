@@ -13,6 +13,7 @@ func _process(delta):
 		$wheat_seed.visible = true
 	if $shopmenu.item4owned == true:
 		Main.game_over()
+		set_process(false)
 	if $corn_seed.planted == true:
 		corn_redo()
 	if $wheat_seed.planted == true:

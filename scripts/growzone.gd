@@ -27,7 +27,7 @@ func _on_area_2d_area_entered(area):
 			$wheat_grow_timer.start()
 			$plant.play("wheat_grow")
 	else: 
-		print("Space is already occupied")
+		pass
 
 
 func _on_corn_grow_timer_timeout():
@@ -63,9 +63,11 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 				Main.numofcorn += 1
 				plantgrowing = false
 				plant_grown = false
+				$hoed_land/Area2D.occupied = false;
 				$plant.play("none")
 			if plant == 2:
 				Main.numofwheat += 1
+				$hoed_land/Area2D.occupied = false;
 				plantgrowing = false
 				plant_grown = false
 				$plant.play("none")

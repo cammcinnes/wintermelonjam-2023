@@ -14,7 +14,7 @@ func _process(delta):
 	$money/cash_label.text = ": " + str(Main.cash)
 	updatecash()
 	if Main.gameover:
-		$Control/tips.text = "Now you can finally rest..."
+		$Control/tips.text = "You may finally rest..."
 
 func updatecash():
 	var icon = $money/cash

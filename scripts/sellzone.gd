@@ -21,9 +21,9 @@ func _on_area_2d_body_entered(body):
 		var money = Main.cash
 		
 		# sell corn
-		money += corn
+		money += corn * 2
 		# sell wheat
-		money += wheat * 2
+		money += wheat * 10
 		
 		wheat = 0
 		corn = 0

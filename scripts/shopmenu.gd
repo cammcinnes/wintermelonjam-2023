@@ -1,6 +1,7 @@
 extends StaticBody2D
 #items 1 = corn seed, item 2 = wheat seed, item 3 = charm
 var item = 1
+var usedcharm = false
 
 var item1price = 1
 var item2price = 5
@@ -41,7 +42,10 @@ func _physics_process(delta):
 			$money_icon.visible = false;
 			$icon.play("charm")
 			$price_label.text = "Charm"
-			$buy_button_color.color = "00ff147b" #green
+			if not usedcharm:
+				$buy_button_color.color = "00ff147b" #green
+			else:
+				$buy_button_color.color = "ff00147b" #red
 		if item == 4:
 			$money_icon.visible = false;
 			$icon.play("retire")
@@ -71,10 +75,10 @@ func _on_buy_button_pressed():
 		if Main.cash >= price:
 			if item2owned == false:
 				buy(2)
-	elif item == 3:
+	elif item == 3 and not usedcharm:
 		price = item3price
 		if item2owned == false:
-			buy(2)
+			buy(3)
 	elif item == 4:
 		price = item4price
 		if item4owned == false:
@@ -105,6 +109,9 @@ func buy(i):
 	if i == 1:
 		item1owned = true
 	if i == 2:
+		item2owned = true
+	if i == 3:
+		usedcharm = true
 		item2owned = true
 	if i == 4:
 		item4owned = true

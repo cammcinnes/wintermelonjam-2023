@@ -84,6 +84,7 @@ animation = &"corn"
 autoplay = "corn"
 
 [node name="wheat_label" type="Label" parent="crop"]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 9.0
 offset_right = 112.0
