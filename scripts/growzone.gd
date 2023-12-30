@@ -71,5 +71,3 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 				$plant.play("none")
 			else:
 				pass
-	print("number of corn:", Main.numofcorn)
-	print("number of wheat:", Main.numofwheat)

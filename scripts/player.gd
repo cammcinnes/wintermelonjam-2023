@@ -40,18 +40,28 @@ func _physics_process(delta):
 	update_animations()
 
 func update_animations():
-	if direction == UP:
-		$AnimatedSprite2D.play("walk_up")
-	elif direction == DOWN:
+	if Input.is_action_pressed("move_down"):
 		$AnimatedSprite2D.play("walk_down")
-	elif direction == RIGHT:
+	elif Input.is_action_pressed("move_right"):
 		$AnimatedSprite2D.play("walk_right")
-		$AnimatedSprite2D.flip_h = false
-	elif direction == LEFT:
+	elif Input.is_action_pressed("move_left"):
 		$AnimatedSprite2D.play("walk_right")
-		$AnimatedSprite2D.flip_h = true
+	elif Input.is_action_pressed("move_up"):
+		$AnimatedSprite2D.play("walk_up")
 	else:
 		$AnimatedSprite2D.play("idle")
+		if (direction == DOWN):
+			$AnimatedSprite2D.play("idle")
+		elif (direction == RIGHT):
+			$AnimatedSprite2D.play("idle_right")
+		elif (direction == LEFT):
+			$AnimatedSprite2D.play("idle_right")
+			$AnimatedSprite2D.flip_h = true;
+		elif (direction == UP):
+			$AnimatedSprite2D.play("idle_up")
 
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
+
+func player_sell_method():
+	pass
