@@ -13,6 +13,8 @@ func _process(delta):
 	$crop/corn_label.text = ": " + str(Main.numofcorn)
 	$money/cash_label.text = ": " + str(Main.cash)
 	updatecash()
+	if Main.gameover:
+		$Control/tips.text = "Now you can finally rest..."
 
 func updatecash():
 	var icon = $money/cash
