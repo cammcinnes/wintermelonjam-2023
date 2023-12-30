@@ -1,13 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://br4yf88hm83rj"]
+[gd_scene load_steps=18 format=3 uid="uid://br4yf88hm83rj"]
 
 [ext_resource type="Texture2D" uid="uid://dyf1tq5uyr27v" path="res://textures/Crop_Spritesheet.png" id="1_byqh1"]
+[ext_resource type="Script" path="res://scripts/shopmenu.gd" id="1_n52pp"]
 [ext_resource type="Texture2D" uid="uid://dhr06wrgiq06u" path="res://textures/arrow.png" id="2_f0sgq"]
+[ext_resource type="Texture2D" uid="uid://cb3qy17ughuh1" path="res://textures/objects/objects.png" id="2_nuomn"]
 [ext_resource type="FontFile" uid="uid://dlfn785vfw35r" path="res://font/monogram.ttf" id="3_sshfp"]
 [ext_resource type="Texture2D" uid="uid://dxwso05hu8ndh" path="res://textures/Treasure+/Treasure+.png" id="4_ccf7h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1ahx"]
+atlas = ExtResource("2_nuomn")
+region = Rect2(128, 34, 16, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1neg"]
 atlas = ExtResource("1_byqh1")
 region = Rect2(80, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y834m"]
+atlas = ExtResource("4_ccf7h")
+region = Rect2(208, 112, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7vte7"]
 atlas = ExtResource("1_byqh1")
@@ -17,10 +27,26 @@ region = Rect2(80, 80, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_u1ahx")
+}],
+"loop": true,
+"name": &"charm",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_j1neg")
 }],
 "loop": true,
 "name": &"corn_seed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y834m")
+}],
+"loop": true,
+"name": &"retire",
 "speed": 5.0
 }, {
 "frames": [{
@@ -78,9 +104,10 @@ animations = [{
 }]
 
 [node name="shopmenu" type="StaticBody2D"]
+script = ExtResource("1_n52pp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 54.0
+offset_right = 84.0
 offset_bottom = 31.0
 color = Color(0.196078, 0.196078, 0.196078, 0.368627)
 
@@ -88,30 +115,32 @@ color = Color(0.196078, 0.196078, 0.196078, 0.368627)
 position = Vector2(11, 12)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_fy8l3")
-animation = &"corn_seed"
-
-[node name="button_left" type="Button" parent="."]
-visible = false
-offset_left = 2.0
-offset_top = 22.0
-offset_right = 10.0
-offset_bottom = 30.0
+animation = &"retire"
 
 [node name="left_button_icon" type="AnimatedSprite2D" parent="."]
 position = Vector2(6, 26)
 sprite_frames = SubResource("SpriteFrames_cn2l3")
 
-[node name="button_right" type="Button" parent="."]
-visible = false
-offset_left = 11.0
+[node name="button_left" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = 2.0
 offset_top = 22.0
-offset_right = 19.0
+offset_right = 10.0
 offset_bottom = 30.0
 
 [node name="right_button_icon" type="AnimatedSprite2D" parent="."]
 position = Vector2(15, 26)
 sprite_frames = SubResource("SpriteFrames_icge4")
 flip_h = true
+
+[node name="button_right" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 22.0
+offset_right = 19.0
+offset_bottom = 30.0
 
 [node name="price_label" type="Label" parent="."]
 offset_left = 22.0
@@ -124,18 +153,34 @@ text = "100"
 horizontal_alignment = 1
 
 [node name="money_icon" type="AnimatedSprite2D" parent="."]
-position = Vector2(48, 8)
+position = Vector2(72, 8)
 scale = Vector2(0.9375, 0.875)
 sprite_frames = SubResource("SpriteFrames_vddea")
-
-[node name="buy_button" type="Button" parent="."]
-offset_left = 22.0
-offset_top = 17.0
-offset_right = 52.0
-offset_bottom = 28.0
 
 [node name="buy_button_color" type="ColorRect" parent="."]
 offset_left = 22.0
 offset_top = 17.0
-offset_right = 52.0
+offset_right = 81.0
 offset_bottom = 28.0
+color = Color(0, 1, 0.0784314, 0.482353)
+
+[node name="buy_button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 22.0
+offset_top = 17.0
+offset_right = 81.0
+offset_bottom = 28.0
+
+[node name="buy_label" type="Label" parent="."]
+offset_left = 43.0
+offset_top = 14.0
+offset_right = 61.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("3_sshfp")
+theme_override_font_sizes/font_size = 16
+text = "buy"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="button_left" to="." method="_on_button_left_pressed"]
+[connection signal="pressed" from="button_right" to="." method="_on_button_right_pressed"]
+[connection signal="pressed" from="buy_button" to="." method="_on_buy_button_pressed"]

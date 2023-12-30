@@ -1,8 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bulcl0h7qdvqb"]
+[gd_scene load_steps=15 format=3 uid="uid://bulcl0h7qdvqb"]
 
 [ext_resource type="Texture2D" uid="uid://cb3qy17ughuh1" path="res://textures/objects/objects.png" id="1_ji3lo"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_y3225"]
 [ext_resource type="Texture2D" uid="uid://duxbbgyusmoma" path="res://textures/characters/NPCS V1/NPCS.png" id="2_tu0pg"]
+[ext_resource type="PackedScene" uid="uid://cokkreqcbdqxr" path="res://scenes/wheat_seed.tscn" id="4_heb2f"]
+[ext_resource type="PackedScene" uid="uid://cp4u61uqr1liu" path="res://scenes/corn_seed.tscn" id="5_5whsl"]
+[ext_resource type="PackedScene" uid="uid://br4yf88hm83rj" path="res://scenes/shopmenu.tscn" id="6_db0lp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxysw"]
 atlas = ExtResource("2_tu0pg")
@@ -60,7 +63,7 @@ script = ExtResource("1_y3225")
 [node name="worker" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_h8byr")
-frame_progress = 0.432738
+frame_progress = 0.996638
 
 [node name="shop_art" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sa4km")
@@ -75,4 +78,14 @@ shape = SubResource("RectangleShape2D_6yr8x")
 position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_tb4c4")
 
+[node name="wheat_seed" parent="." instance=ExtResource("4_heb2f")]
+position = Vector2(-1, -6)
+
+[node name="corn_seed" parent="." instance=ExtResource("5_5whsl")]
+position = Vector2(0, -5)
+
+[node name="shopmenu" parent="." instance=ExtResource("6_db0lp")]
+position = Vector2(-43, -54)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
