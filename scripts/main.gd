@@ -1,14 +1,13 @@
 extends Node
+#1 wheat, 2 corn
+var plantselected = 1
+var numofwheat = 0
+var numofcorn = 0
 
-
-func newGame():
-	$player.start($start_position.position)
-	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	newGame()
+	pass
 	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

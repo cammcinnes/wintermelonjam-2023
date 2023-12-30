@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cokkreqcbdqxr"]
+
+[ext_resource type="Script" path="res://scripts/wheat_seed.gd" id="1_4le5l"]
+[ext_resource type="Texture2D" uid="uid://dyf1tq5uyr27v" path="res://textures/Crop_Spritesheet.png" id="1_ml882"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snfyh"]
+atlas = ExtResource("1_ml882")
+region = Rect2(80, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ej21h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snfyh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nrai2"]
+radius = 6.0
+
+[node name="wheat_seed" type="StaticBody2D"]
+position = Vector2(380, 155)
+script = ExtResource("1_4le5l")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ej21h")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_nrai2")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

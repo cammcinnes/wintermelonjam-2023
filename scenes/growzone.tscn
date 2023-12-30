@@ -1,0 +1,126 @@
+[gd_scene load_steps=16 format=3 uid="uid://xaq1g1rn45ww"]
+
+[ext_resource type="Script" path="res://scripts/growzone.gd" id="1_v5lim"]
+[ext_resource type="Texture2D" uid="uid://dyf1tq5uyr27v" path="res://textures/Crop_Spritesheet.png" id="2_7krq1"]
+[ext_resource type="Texture2D" uid="uid://cl3dd3mom0rn3" path="res://textures/tilesets/pixil-frame-0 (3).png" id="2_gf35e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dd2j"]
+atlas = ExtResource("2_gf35e")
+region = Rect2(32, 14, 16, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_67nns"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dd2j")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qx7xx"]
+size = Vector2(14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymdm4"]
+atlas = ExtResource("2_7krq1")
+region = Rect2(64, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76b82"]
+atlas = ExtResource("2_7krq1")
+region = Rect2(48, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt5hu"]
+atlas = ExtResource("2_7krq1")
+region = Rect2(32, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stkdg"]
+atlas = ExtResource("2_7krq1")
+region = Rect2(16, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua3j8"]
+atlas = ExtResource("2_7krq1")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg1r6"]
+atlas = ExtResource("2_7krq1")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_228xa"]
+atlas = ExtResource("2_7krq1")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4ho3"]
+atlas = ExtResource("2_7krq1")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eb0bs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymdm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76b82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt5hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stkdg")
+}],
+"loop": true,
+"name": &"corn_grow",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"none",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua3j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg1r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_228xa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4ho3")
+}],
+"loop": true,
+"name": &"wheat_grow",
+"speed": 0.0
+}]
+
+[node name="growzone" type="StaticBody2D"]
+script = ExtResource("1_v5lim")
+
+[node name="hoed_land" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_67nns")
+animation = &"new_animation"
+
+[node name="Area2D" type="Area2D" parent="hoed_land"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hoed_land/Area2D"]
+shape = SubResource("RectangleShape2D_qx7xx")
+
+[node name="plant" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.875, 0.9375)
+sprite_frames = SubResource("SpriteFrames_eb0bs")
+animation = &"corn_grow"
+
+[node name="wheat_grow_timer" type="Timer" parent="."]
+
+[node name="corn_grow_timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="hoed_land/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="hoed_land/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="timeout" from="wheat_grow_timer" to="." method="_on_wheat_grow_timer_timeout"]
+[connection signal="timeout" from="corn_grow_timer" to="." method="_on_corn_grow_timer_timeout"]

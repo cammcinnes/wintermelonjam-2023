@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://byh5danmly2j4"]
+[gd_scene load_steps=22 format=3 uid="uid://byh5danmly2j4"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_0tnjh"]
 [ext_resource type="PackedScene" uid="uid://c564ni2iq5e7f" path="res://scenes/player.tscn" id="1_x8416"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bss1mvm882xa" path="res://textures/tilesets/fences.png" id="6_bhg31"]
 [ext_resource type="Texture2D" uid="uid://cb3qy17ughuh1" path="res://textures/objects/objects.png" id="7_ef2mr"]
 [ext_resource type="Texture2D" uid="uid://dyf1tq5uyr27v" path="res://textures/Crop_Spritesheet.png" id="9_3fsbu"]
+[ext_resource type="PackedScene" uid="uid://cokkreqcbdqxr" path="res://scenes/wheat_seed.tscn" id="10_j5buc"]
+[ext_resource type="PackedScene" uid="uid://cp4u61uqr1liu" path="res://scenes/corn_seed.tscn" id="11_1so3n"]
+[ext_resource type="PackedScene" uid="uid://xaq1g1rn45ww" path="res://scenes/growzone.tscn" id="12_2jnoe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tk8pw"]
 texture = ExtResource("3_viwpl")
@@ -514,6 +517,7 @@ sources/5 = SubResource("TileSetAtlasSource_84nai")
 script = ExtResource("1_0tnjh")
 
 [node name="player" parent="." instance=ExtResource("1_x8416")]
+position = Vector2(321, 177)
 speed = 125
 
 [node name="Background" type="TileMap" parent="."]
@@ -531,3 +535,10 @@ format = 2
 
 [node name="start_position" type="Marker2D" parent="."]
 position = Vector2(320, 180)
+
+[node name="growzone" parent="." instance=ExtResource("12_2jnoe")]
+position = Vector2(398, 54)
+
+[node name="corn_seed" parent="." instance=ExtResource("11_1so3n")]
+
+[node name="wheat_seed" parent="." instance=ExtResource("10_j5buc")]
