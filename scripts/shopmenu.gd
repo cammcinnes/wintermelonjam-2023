@@ -81,8 +81,9 @@ func _on_buy_button_pressed():
 			buy(3)
 	elif item == 4:
 		price = item4price
-		if item4owned == false:
-			buy(4)
+		if Main.cash >= price:
+			if item4owned == false:
+				buy(4)
 
 func swap_item_back():
 	if item == 1:
