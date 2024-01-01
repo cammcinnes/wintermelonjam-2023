@@ -1,5 +1,5 @@
 # Honest Work (Godot Game)
-My godot 4.0 submission for Winter Melon Jam 2023 (3-day jam). This is the first (non-tutorial) game I made in godot.
+My godot 4.0 submission for Winter Melon Jam 2023 (3-day jam). This is the first (non-tutorial) game I made in godot using GDScript.
 <br/>
 You can play it here: https://cammcinnes.itch.io/honest-work
 <br/>
