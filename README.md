@@ -3,6 +3,7 @@ My godot 4.0 submission for Winter Melon Jam 2023 (3-day jam). This is the first
 <br/>
 You can play it here: https://cammcinnes.itch.io/honest-work
 <br/>
+![Screenshot from 2023-12-30 14-53-28](https://github.com/cammcinnes/wintermelonjam-2023/assets/88452661/0b387b41-1e30-4147-b1a0-ca539551df13)
 
 Credits:
 <br/>
