@@ -1,7 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://c564ni2iq5e7f"]
+[gd_scene load_steps=46 format=3 uid="uid://c564ni2iq5e7f"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8qk5e"]
 [ext_resource type="Texture2D" uid="uid://b7i1uas26qx6q" path="res://textures/characters/player.png" id="2_u7xmq"]
+[ext_resource type="AudioStream" uid="uid://ciy3ty8ojrja" path="res://music/Organoid - Sunrise.mp3" id="3_06dyc"]
+[ext_resource type="AudioStream" uid="uid://daybtt18mkl2w" path="res://music/611608__djscreechingpossum__sleep-with-the-frogs.mp3" id="4_gkpl4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ft547"]
 atlas = ExtResource("2_u7xmq")
@@ -332,3 +334,10 @@ speed_scale = 2.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_wki00")
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_06dyc")
+volume_db = -20.0
+
+[node name="end" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gkpl4")

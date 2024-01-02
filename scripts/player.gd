@@ -11,6 +11,7 @@ const LEFT = Vector2(-1, 0)
 func _ready():
 	screen_size = get_viewport_rect().size
 	direction = DOWN
+	$theme.play()
 
 func start(pos):
 	position = pos
@@ -74,4 +75,8 @@ func player_shop_method():
 	pass
 	
 func rest():
+	var theme = $theme
 	$AnimatedSprite2D.play("rest")
+	if theme.is_playing():
+		theme.stop()
+		$end.play()

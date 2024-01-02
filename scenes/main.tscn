@@ -1182,7 +1182,7 @@ sources/2 = SubResource("TileSetAtlasSource_ob7pa")
 sources/4 = SubResource("TileSetAtlasSource_2mjd7")
 sources/5 = SubResource("TileSetAtlasSource_84nai")
 
-[node name="main" type="Node"]
+[node name="Main" type="Node"]
 script = ExtResource("1_0tnjh")
 
 [node name="Background" type="TileMap" parent="."]
@@ -1457,9 +1457,9 @@ speed = 125
 [node name="shop" parent="." instance=ExtResource("15_7x6fa")]
 position = Vector2(534, 126)
 
-[node name="music" type="AudioStreamPlayer2D" parent="."]
+[node name="end_game" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_4bxio")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_p8owq")
 volume_db = -20.0
-
-[node name="end_game" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("15_4bxio")
