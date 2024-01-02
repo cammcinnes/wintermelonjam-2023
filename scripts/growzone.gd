@@ -17,15 +17,19 @@ func _physics_process(delta):
 
 
 func _on_area_2d_area_entered(area):
-	if not plantgrowing:
+	if not plantgrowing and not Main.onCooldown:
 		if plant == 1:
 			plantgrowing = true
 			$corn_grow_timer.start()
 			$plant.play("corn_grow")
+			Main.onCooldown = true
+			$cooldown.start()
 		if plant == 2:
 			plantgrowing = true
 			$wheat_grow_timer.start()
 			$plant.play("wheat_grow")
+			Main.onCooldown = true
+			$cooldown.start()
 	else: 
 		pass
 
@@ -63,14 +67,18 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 				Main.numofcorn += 1
 				plantgrowing = false
 				plant_grown = false
-				$hoed_land/Area2D.occupied = false;
+				$hoed_land/Area2D.occupied = false
 				$plant.play("none")
 			if plant == 2:
 				Main.numofwheat += 1
-				$hoed_land/Area2D.occupied = false;
+				$hoed_land/Area2D.occupied = false
 				plantgrowing = false
 				plant_grown = false
 				$plant.play("none")
 			else:
 				pass
 				
+
+
+func _on_cooldown_timeout():
+	Main.onCooldown = false

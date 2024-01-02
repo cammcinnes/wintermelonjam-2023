@@ -4,6 +4,7 @@ var plantselected = 1
 var numofwheat = 0
 var numofcorn = 0
 var cash = 100
+var onCooldown = false
 
 var gameover = false
 

@@ -5,7 +5,7 @@ func _ready():
 	$crop/wheat_label.text = ": 0"
 	$crop/corn_label.text = ": 0"
 	$money/cash_label.text = ": 0"
-	$Control/tips.text = ""
+	$Control/end_screen.text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -14,7 +14,7 @@ func _process(delta):
 	$money/cash_label.text = ": " + str(Main.cash)
 	updatecash()
 	if Main.gameover:
-		$Control/tips.text = "You may finally rest..."
+		$Control/end_screen.text = "You may finally rest..."
 
 func updatecash():
 	var icon = $money/cash

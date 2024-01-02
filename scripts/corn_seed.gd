@@ -1,5 +1,4 @@
 extends StaticBody2D
-
 var selected = false
 var seed_type = 1 #corn
 var planted = false
