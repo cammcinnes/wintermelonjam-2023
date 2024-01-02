@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6eb67wri0gno"]
+
+[ext_resource type="Texture2D" uid="uid://byfamlggq284s" path="res://textures/particles/rain.png" id="1_5csfh"]
+[ext_resource type="Script" path="res://scripts/weather_control.gd" id="1_82bwh"]
+[ext_resource type="AudioStream" uid="uid://7jj87ek2v2aw" path="res://music/rain.mp3" id="3_8bmeq"]
+
+[node name="weather_control" type="StaticBody2D"]
+script = ExtResource("1_82bwh")
+
+[node name="rain_tint" type="CanvasModulate" parent="."]
+color = Color(0.623529, 0.623529, 0.623529, 1)
+
+[node name="rain" type="CPUParticles2D" parent="."]
+position = Vector2(320, 2.08165e-12)
+amount = 200
+speed_scale = 0.6
+randomness = 1.0
+texture = ExtResource("1_5csfh")
+emission_shape = 3
+emission_rect_extents = Vector2(320, 1)
+gravity = Vector2(2.08165e-12, 980)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="rain_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8bmeq")
+volume_db = -10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

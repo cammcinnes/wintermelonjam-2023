@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/13. bedtime ballad.mp3-16673162b6108c0543856d
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
