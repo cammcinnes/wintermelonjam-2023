@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://byh5danmly2j4"]
+[gd_scene load_steps=26 format=3 uid="uid://byh5danmly2j4"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_0tnjh"]
 [ext_resource type="PackedScene" uid="uid://c564ni2iq5e7f" path="res://scenes/player.tscn" id="1_x8416"]
@@ -12,8 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cq4ibfmuyjkio" path="res://scenes/sellzone.tscn" id="10_lvsup"]
 [ext_resource type="PackedScene" uid="uid://xaq1g1rn45ww" path="res://scenes/growzone.tscn" id="12_2jnoe"]
 [ext_resource type="PackedScene" uid="uid://bpqxfe6ebfb4d" path="res://scenes/gui.tscn" id="13_qxv7o"]
-[ext_resource type="AudioStream" uid="uid://ciy3ty8ojrja" path="res://music/Organoid - Sunrise.mp3" id="14_p8owq"]
-[ext_resource type="AudioStream" uid="uid://daybtt18mkl2w" path="res://music/611608__djscreechingpossum__sleep-with-the-frogs.mp3" id="15_4bxio"]
 [ext_resource type="PackedScene" uid="uid://bulcl0h7qdvqb" path="res://scenes/shop.tscn" id="15_7x6fa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tk8pw"]
@@ -1456,10 +1454,3 @@ speed = 125
 
 [node name="shop" parent="." instance=ExtResource("15_7x6fa")]
 position = Vector2(534, 126)
-
-[node name="end_game" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_4bxio")
-
-[node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_p8owq")
-volume_db = -20.0

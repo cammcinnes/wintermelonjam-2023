@@ -17,6 +17,4 @@ Assets:
 - NPCS Pack by srtoasty https://srtoasty.itch.io/npcs-pack-sta-toasty
 - monogram font by datagoblin https://datagoblin.itch.io/monogram
 <br/>
-Music:
-
-Sunrise by Organoid https://freemusicarchive.org/music/Organoid/
+Music by trashkid https://www.youtube.com/@trashkidd
