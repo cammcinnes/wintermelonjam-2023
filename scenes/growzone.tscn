@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/growzone.gd" id="1_v5lim"]
 [ext_resource type="Texture2D" uid="uid://dyf1tq5uyr27v" path="res://textures/Crop_Spritesheet.png" id="2_7krq1"]
 [ext_resource type="Texture2D" uid="uid://cl3dd3mom0rn3" path="res://textures/tilesets/pixil-frame-0 (3).png" id="2_gf35e"]
-[ext_resource type="Script" path="res://scripts/Area2D.gd" id="3_caocu"]
+[ext_resource type="Script" path="res://scripts/can_grow.gd" id="3_4n500"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4dd2j"]
 atlas = ExtResource("2_gf35e")
@@ -107,10 +107,10 @@ script = ExtResource("1_v5lim")
 sprite_frames = SubResource("SpriteFrames_67nns")
 animation = &"new_animation"
 
-[node name="Area2D" type="Area2D" parent="hoed_land"]
-script = ExtResource("3_caocu")
+[node name="can_grow" type="Area2D" parent="hoed_land"]
+script = ExtResource("3_4n500")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hoed_land/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hoed_land/can_grow"]
 shape = SubResource("RectangleShape2D_qx7xx")
 
 [node name="plant" type="AnimatedSprite2D" parent="."]
@@ -126,8 +126,8 @@ wait_time = 5.0
 
 [node name="cooldown" type="Timer" parent="."]
 
-[connection signal="area_entered" from="hoed_land/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="input_event" from="hoed_land/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="hoed_land/can_grow" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="hoed_land/can_grow" to="." method="_on_area_2d_input_event"]
 [connection signal="timeout" from="wheat_grow_timer" to="." method="_on_wheat_grow_timer_timeout"]
 [connection signal="timeout" from="corn_grow_timer" to="." method="_on_corn_grow_timer_timeout"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

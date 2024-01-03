@@ -7,35 +7,40 @@ var singleTimer = true
 func _ready():
 	$crop.visible = false
 	$money.visible = false
-	$gameover.visible = false
 	
 # run after game was started by pressing button
 func start_in_game_gui():
-	$start.visible = false
-	$crop.visible = true
-	$money.visible = true
-	$gameover.visible = false
-	$gameover/end_screen.visible = false
+	change_to_ingame_vis()
+	add_text_to_ingame_gui()
+
+func add_text_to_ingame_gui():
 	$crop/wheat_label.text = ": 0"
 	$crop/corn_label.text = ": 0"
 	$money/cash_label.text = ": 0"
 	$gameover/end_screen.text = ""
 
+# allow to show parts of hud in the ingame
+func change_to_ingame_vis():
+	$start.visible = false
+	$crop.visible = true
+	$money.visible = true
+	$gameover.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$crop/wheat_label.text = ": " + str(Main.numofwheat)
-	$crop/corn_label.text = ": " + str(Main.numofcorn)
-	$money/cash_label.text = ": " + str(Main.cash)
+	update_gui_labels()
 	updatecash()
 	if Main.gameover and singleTimer:
-		$gameover.visible = true
-		$gameover/end_screen.visible = true
-		$gameover/restart_button.visible = false
-		$gameover/end_screen.text = "You may finally rest..."
+		game_over_screen()
+		# start timer for restart button if hasn't already been started
 		if singleTimer:
 			$gameover/Timer.start()
 			singleTimer = false
+
+func update_gui_labels():
+	$crop/wheat_label.text = ": " + str(Main.numofwheat)
+	$crop/corn_label.text = ": " + str(Main.numofcorn)
+	$money/cash_label.text = ": " + str(Main.cash)
 
 func updatecash():
 	var icon = $money/cash
@@ -63,3 +68,9 @@ func intializeItem():
 	Main.numofcorn = 0
 	Main.cash = 100
 
+# Makes the game over screen visible
+func game_over_screen():
+	$gameover.visible = true
+	$gameover/end_screen.visible = true
+	$gameover/restart_button.visible = false
+	$gameover/end_screen.text = "You may finally rest..."
