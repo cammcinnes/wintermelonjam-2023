@@ -7,51 +7,46 @@ const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
 const RIGHT = Vector2(1, 0)
 const LEFT = Vector2(-1, 0)
-# initialize
-var initialize = false
+
+#stop the player movement while in the end_screen
+var hasSlept = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	direction = DOWN
 	self.visible = false
 	
-
 # run on start button being hit
 func start():
 	self.visible = true
 	position = Vector2(320, 180)
 	$theme.play()
+	direction = DOWN
+	$AnimatedSprite2D.play("idle")
+	print("animation ran")
+	
 
 func _physics_process(delta):
 	# check if game is running and hasn't already started before
-	if Main.start and not initialize:
+	if Main.start:
 		start()
-		initialize = true
-	if Main.gameover == false:
-	# Movement
-		var input_direction = Vector2(
-			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-		)
-		velocity = input_direction * speed
-
-		# Update direction based on input
-		if input_direction.length_squared() > 0:
-			direction = input_direction.normalized()
-		
-		move_and_slide()
-
-		# Clamp the player's position to the screen boundaries
-		var new_position = position
-		new_position.x = clamp(new_position.x, 10, screen_size.x - 10)
-		new_position.y = clamp(new_position.y, 5, screen_size.y - 20)
-		position = new_position
-
+		Main.ingame = true
+		Main.start = false
+		print(Main.gameover)
+	if not Main.gameover:
+		# Movement
+		move_player()
 		# Animations
 		update_animations()
+		
+		hasSlept = false
 	else:
-		set_physics_process(false)
-		rest()
+		# gameover is true and haven't finalized yet; else do nothing
+		if not hasSlept:
+			rest()
+			hasSlept = true
+
+	
 
 func update_animations():
 	if Input.is_action_pressed("move_down"):
@@ -88,3 +83,22 @@ func rest():
 	if theme.is_playing():
 		theme.stop()
 		$end.play()
+
+func move_player():
+	var input_direction = Vector2(
+	Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+	Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	)
+	velocity = input_direction * speed
+
+	# Update direction based on input
+	if input_direction.length_squared() > 0:
+		direction = input_direction.normalized()
+	
+	move_and_slide()
+
+	# Clamp the player's position to the screen boundaries
+	var new_position = position
+	new_position.x = clamp(new_position.x, 10, screen_size.x - 10)
+	new_position.y = clamp(new_position.y, 5, screen_size.y - 20)
+	position = new_position

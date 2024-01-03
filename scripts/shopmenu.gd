@@ -21,6 +21,8 @@ func _ready():
 	$buy_label.text = "buy"
 
 func _physics_process(delta):
+	if Main.start:
+		item = 1
 	if self.visible == true:
 		if item == 1:
 			$money_icon.visible = true

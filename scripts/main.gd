@@ -10,7 +10,9 @@ var onCooldown = false
 var weather
 
 var start = false
+var ingame = false
 var gameover = false
 
 func game_over():
 	gameover = true
+	ingame = false
