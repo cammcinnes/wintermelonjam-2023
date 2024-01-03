@@ -17,10 +17,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	Main.weather = curr_weather
 	if Main.ingame and not initialize:
 		$Timer.start()
 		initialize = true
-	Main.weather = curr_weather
 	if curr_weather == "none":
 		self.visible = false
 	elif curr_weather == "rain":

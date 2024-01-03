@@ -1,21 +1,8 @@
 extends StaticBody2D
 signal trytosell
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_area_2d_body_entered(body):
 	if body.has_method("player_sell_method"):
-		#print("selling")
-		#trytosell.emit()
-		#if Input.is_action_pressed("interact"):
 		var corn = Main.numofcorn
 		var wheat = Main.numofwheat
 		var money = Main.cash

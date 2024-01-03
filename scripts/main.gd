@@ -5,8 +5,10 @@ var numofwheat = 0
 var numofcorn = 0
 var cash = 100
 
+# planting cooldown
 var onCooldown = false
 
+# global for weather
 var weather
 
 var start = false

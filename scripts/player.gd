@@ -23,7 +23,6 @@ func start():
 	$theme.play()
 	direction = DOWN
 	$AnimatedSprite2D.play("idle")
-	print("animation ran")
 	
 
 func _physics_process(delta):
@@ -32,7 +31,6 @@ func _physics_process(delta):
 		start()
 		Main.ingame = true
 		Main.start = false
-		print(Main.gameover)
 	if not Main.gameover:
 		# Movement
 		move_player()
