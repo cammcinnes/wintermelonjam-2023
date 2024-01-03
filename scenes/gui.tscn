@@ -129,7 +129,7 @@ theme_override_font_sizes/font_size = 16
 text = ": 1"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="."]
+[node name="gameover" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -143,7 +143,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="end_screen" type="Label" parent="Control"]
+[node name="end_screen" type="Label" parent="gameover"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -158,5 +158,137 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_3mn8g")
 theme_override_font_sizes/font_size = 32
-text = "Now you can finally rest..."
 horizontal_alignment = 1
+
+[node name="restart_button" type="Control" parent="gameover"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="restart" type="ColorRect" parent="gameover/restart_button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_top = 40.0
+offset_right = 39.5
+offset_bottom = 62.0
+grow_horizontal = 2
+color = Color(0.188235, 0.188235, 0.188235, 1)
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="gameover/restart_button/restart"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3mn8g")
+text = "restart
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restart2" type="Button" parent="gameover/restart_button"]
+modulate = Color(1, 1, 1, 0.254902)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = 1.0
+offset_right = 39.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Timer" type="Timer" parent="gameover"]
+wait_time = 5.0
+
+[node name="start" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="game_title" type="Label" parent="start"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.5
+offset_right = 50.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_3mn8g")
+theme_override_font_sizes/font_size = 32
+text = "Honest Work"
+horizontal_alignment = 1
+
+[node name="start_color" type="ColorRect" parent="start"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_top = 40.0
+offset_right = 39.5
+offset_bottom = 62.0
+grow_horizontal = 2
+color = Color(0.188235, 0.188235, 0.188235, 1)
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="start/start_color"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3mn8g")
+text = "start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start_button" type="Button" parent="start"]
+modulate = Color(1, 1, 1, 0.254902)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = 1.0
+offset_right = 39.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="pressed" from="gameover/restart_button/restart2" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="gameover/Timer" to="." method="_on_end_timer_timeout"]
+[connection signal="pressed" from="start/start_button" to="." method="_on_start_button_pressed"]

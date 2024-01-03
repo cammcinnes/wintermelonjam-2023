@@ -1,11 +1,24 @@
 extends CanvasLayer
-
 # Called when the node enters the scene tree for the first time.
+signal startsignal
+
+# run on load
 func _ready():
+	$crop.visible = false
+	$money.visible = false
+	$gameover.visible = false
+	
+# run after game was started by pressing button
+func start():
+	$start.visible = false
+	$crop.visible = true
+	$money.visible = true
+	$gameover.visible = false
 	$crop/wheat_label.text = ": 0"
 	$crop/corn_label.text = ": 0"
 	$money/cash_label.text = ": 0"
-	$Control/end_screen.text = ""
+	$gameover/end_screen.text = "You may finally rest..."
+	set_process(true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -14,7 +27,10 @@ func _process(delta):
 	$money/cash_label.text = ": " + str(Main.cash)
 	updatecash()
 	if Main.gameover:
-		$Control/end_screen.text = "You may finally rest..."
+		$gameover.visible = true
+		$gameover/restart_button.visible = false
+		$gameover/Timer.start()
+		set_process(false)
 
 func updatecash():
 	var icon = $money/cash
@@ -25,8 +41,11 @@ func updatecash():
 	elif (Main.cash > 100):
 		icon.frame = 2
 
-# display tip in hud
-func tip():
-	var hud = $Control/tips
-	hud.text = "Press [Enter] to Sell Items"
+func _on_start_button_pressed():
+	start()
+	Main.start = true
+
+
+func _on_end_timer_timeout():
+	$gameover/restart_button.visible = true
 

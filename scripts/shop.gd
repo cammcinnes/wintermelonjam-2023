@@ -1,12 +1,15 @@
 extends StaticBody2D
 
 func _ready():
+	self.visible = false
 	$worker.play("default")
 	$shopmenu.visible = false
 	$corn_seed.visible = false
 	$wheat_seed.visible = false
 	
 func _process(delta):
+	if Main.start:
+		self.visible = true
 	if $shopmenu.item1owned == true:
 		$corn_seed.visible = true
 	if $shopmenu.item2owned == true:

@@ -7,18 +7,26 @@ const UP = Vector2(0, -1)
 const DOWN = Vector2(0, 1)
 const RIGHT = Vector2(1, 0)
 const LEFT = Vector2(-1, 0)
+# initialize
+var initialize = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	direction = DOWN
+	self.visible = false
+	
+
+# run on start button being hit
+func start():
+	self.visible = true
+	position = Vector2(320, 180)
 	$theme.play()
 
-func start(pos):
-	position = pos
-	show()
-
 func _physics_process(delta):
-	# check if game is running
+	# check if game is running and hasn't already started before
+	if Main.start and not initialize:
+		start()
+		initialize = true
 	if Main.gameover == false:
 	# Movement
 		var input_direction = Vector2(

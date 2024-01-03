@@ -9,6 +9,7 @@ var onCooldown = false
 
 var weather
 
+var start = false
 var gameover = false
 
 func game_over():
