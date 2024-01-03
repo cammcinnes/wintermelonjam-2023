@@ -5,7 +5,7 @@ var curr_weather = "none"
 # game started
 var started
 # intialize the timer
-var initialize
+var initialize = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if curr_weather == "none":
@@ -17,8 +17,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	started = Main.start
-	if started and not initialize:
+	if Main.ingame and not initialize:
 		$Timer.start()
 		initialize = true
 	Main.weather = curr_weather
@@ -28,6 +27,7 @@ func _process(delta):
 		self.visible = true
 		
 
+#switch weather on timer if not in game_over screen
 func _on_timer_timeout():
 	if not Main.gameover:
 		if curr_weather == "none":

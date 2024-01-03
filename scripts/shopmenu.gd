@@ -13,7 +13,7 @@ var item2owned = false
 var item4owned = false
 
 var price
-# Called when the node enters the scene tree for the first time.
+# initialize shop menu
 func _ready():
 	$icon.play("corn_seed")
 	item = 1
@@ -25,37 +25,13 @@ func _physics_process(delta):
 		item = 1
 	if self.visible == true:
 		if item == 1:
-			$money_icon.visible = true
-			$icon.play("corn_seed")
-			$price_label.text = str(item1price)
-			if Main.cash >= item1price:
-				$buy_button_color.color = "00ff147b" #green
-			else:
-				$buy_button_color.color = "ff00147b"
+			switch_to_corn()
 		if item == 2:
-			$money_icon.visible = true
-			$icon.play("wheat_seed")
-			$price_label.text = str(item2price)
-			if Main.cash >= item2price:
-				$buy_button_color.color = "00ff147b" #green
-			else:
-				$buy_button_color.color = "ff00147b"
+			switch_to_wheat()
 		if item == 3:
-			$money_icon.visible = false;
-			$icon.play("charm")
-			$price_label.text = "Charm"
-			if not usedcharm:
-				$buy_button_color.color = "00ff147b" #green
-			else:
-				$buy_button_color.color = "ff00147b" #red
+			charm_the_shopkeeper()
 		if item == 4:
-			$money_icon.visible = false;
-			$icon.play("retire")
-			$price_label.text = "Retirement"
-			if Main.cash >= item4price:
-				$buy_button_color.color = "00ff147b" #green
-			else:
-				$buy_button_color.color = "ff00147b" #red
+			switch_to_retirement()
 	
 
 func _on_button_left_pressed():
@@ -65,7 +41,7 @@ func _on_button_left_pressed():
 func _on_button_right_pressed():
 	swap_item_forward()
 
-
+# allows or cancels action based on cash in inventory
 func _on_buy_button_pressed():
 	if item == 1:
 		price = item1price
@@ -118,4 +94,43 @@ func buy(i):
 		item2owned = true
 	if i == 4:
 		item4owned = true
+
+#displays corn seed in item menu
+func switch_to_corn():
+	$money_icon.visible = true
+	$icon.play("corn_seed")
+	$price_label.text = str(item1price)
+	if Main.cash >= item1price:
+		$buy_button_color.color = "00ff147b" #green
+	else:
+		$buy_button_color.color = "ff00147b"
+
+#displays wheat seed in item menu
+func switch_to_wheat():
+	$money_icon.visible = true
+	$icon.play("wheat_seed")
+	$price_label.text = str(item2price)
+	if Main.cash >= item2price:
+		$buy_button_color.color = "00ff147b" #green
+	else:
+		$buy_button_color.color = "ff00147b"
 	
+#displays the charm option in item menu
+func charm_the_shopkeeper():
+	$money_icon.visible = false;
+	$icon.play("charm")
+	$price_label.text = "Charm"
+	if not usedcharm:
+		$buy_button_color.color = "00ff147b" #green
+	else:
+		$buy_button_color.color = "ff00147b" #red
+
+#displays the retirement option in item menu
+func switch_to_retirement():
+	$money_icon.visible = false;
+	$icon.play("retire")
+	$price_label.text = "Retirement"
+	if Main.cash >= item4price:
+		$buy_button_color.color = "00ff147b" #green
+	else:
+		$buy_button_color.color = "ff00147b" #red
