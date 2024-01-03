@@ -14,6 +14,10 @@ func _physics_process(delta):
 	# prevents picking wrong plant
 	if plantgrowing == false:
 		plant = Main.plantselected
+	if Main.gameover:
+		$plant.play("none")
+		plant_grown = false
+		plantgrowing = false
 
 
 func _on_area_2d_area_entered(area):
