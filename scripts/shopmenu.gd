@@ -100,6 +100,7 @@ func switch_to_corn():
 	$money_icon.visible = true
 	$icon.play("corn_seed")
 	$price_label.text = str(item1price)
+	$money_icon.play("default")
 	if Main.cash >= item1price:
 		$buy_button_color.color = "00ff147b" #green
 	else:
@@ -110,6 +111,7 @@ func switch_to_wheat():
 	$money_icon.visible = true
 	$icon.play("wheat_seed")
 	$price_label.text = str(item2price)
+	$money_icon.play("med_bank")
 	if Main.cash >= item2price:
 		$buy_button_color.color = "00ff147b" #green
 	else:
@@ -129,7 +131,8 @@ func charm_the_shopkeeper():
 func switch_to_retirement():
 	$money_icon.visible = false;
 	$icon.play("retire")
-	$price_label.text = "Retirement"
+	$price_label.text = "100 Retirement"
+	$money_icon.play("big_bank")
 	if Main.cash >= item4price:
 		$buy_button_color.color = "00ff147b" #green
 	else:

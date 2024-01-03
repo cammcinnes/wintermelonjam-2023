@@ -79,7 +79,7 @@ position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_tb4c4")
 
 [node name="shopmenu" parent="." instance=ExtResource("6_db0lp")]
-position = Vector2(-43, -54)
+position = Vector2(-59, -54)
 
 [node name="pickup" type="Marker2D" parent="."]
 position = Vector2(0, -4)
