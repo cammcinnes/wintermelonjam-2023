@@ -119,7 +119,7 @@ sprite_frames = SubResource("SpriteFrames_eb0bs")
 animation = &"corn_grow"
 
 [node name="wheat_grow_timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 8.0
 
 [node name="corn_grow_timer" type="Timer" parent="."]
 wait_time = 5.0

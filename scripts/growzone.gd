@@ -14,6 +14,7 @@ func _physics_process(delta):
 	# prevents picking wrong plant
 	if plantgrowing == false:
 		plant = Main.plantselected
+	# stops plants growing in end screen
 	if Main.gameover:
 		$plant.play("none")
 		plant_grown = false
@@ -23,21 +24,13 @@ func _physics_process(delta):
 func _on_area_2d_area_entered(area):
 	if not plantgrowing and not Main.onCooldown:
 		if plant == 1:
-			plantgrowing = true
-			$corn_grow_timer.start()
-			$plant.play("corn_grow")
-			Main.onCooldown = true
-			$cooldown.start()
+			grow_corn()
 		if plant == 2:
-			plantgrowing = true
-			$wheat_grow_timer.start()
-			$plant.play("wheat_grow")
-			Main.onCooldown = true
-			$cooldown.start()
+			grow_wheat()
 	else: 
 		pass
 
-
+# change frames on timer timeout 5 sec intervals
 func _on_corn_grow_timer_timeout():
 	var corn_plant = $plant
 	if corn_plant.frame == 0:
@@ -50,7 +43,7 @@ func _on_corn_grow_timer_timeout():
 		corn_plant.frame = 3
 		plant_grown = true
 
-
+# change frames on timer timeout 8sec intervals
 func _on_wheat_grow_timer_timeout():
 	var wheat_plant = $plant
 	if wheat_plant.frame == 0:
@@ -68,17 +61,9 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("click"):
 		if plant_grown:
 			if plant == 1:
-				Main.numofcorn += 1
-				plantgrowing = false
-				plant_grown = false
-				$hoed_land/Area2D.occupied = false
-				$plant.play("none")
+				harvest_corn()
 			if plant == 2:
-				Main.numofwheat += 1
-				$hoed_land/Area2D.occupied = false
-				plantgrowing = false
-				plant_grown = false
-				$plant.play("none")
+				harvest_wheat()
 			else:
 				pass
 				
@@ -86,3 +71,35 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 
 func _on_cooldown_timeout():
 	Main.onCooldown = false
+
+# start corn timer and show growth
+func grow_corn():
+	plantgrowing = true
+	$corn_grow_timer.start()
+	$plant.play("corn_grow")
+	Main.onCooldown = true
+	$cooldown.start()
+	
+# start wheat timer and show growth
+func grow_wheat():
+	plantgrowing = true
+	$wheat_grow_timer.start()
+	$plant.play("wheat_grow")
+	Main.onCooldown = true
+	$cooldown.start()
+
+# get rid of corn in grow zone and add money to player
+func harvest_corn():
+	Main.numofcorn += 1
+	plantgrowing = false
+	plant_grown = false
+	$hoed_land/Area2D.occupied = false
+	$plant.play("none")
+
+# get rid of wheat in grow zone and add money to player
+func harvest_wheat():
+	Main.numofwheat += 1
+	$hoed_land/Area2D.occupied = false
+	plantgrowing = false
+	plant_grown = false
+	$plant.play("none")
