@@ -129,9 +129,9 @@ func charm_the_shopkeeper():
 
 #displays the retirement option in item menu
 func switch_to_retirement():
-	$money_icon.visible = false;
+	$money_icon.visible = true;
 	$icon.play("retire")
-	$price_label.text = "100 Retirement"
+	$price_label.text = "Retirement"
 	$money_icon.play("big_bank")
 	if Main.cash >= item4price:
 		$buy_button_color.color = "00ff147b" #green
