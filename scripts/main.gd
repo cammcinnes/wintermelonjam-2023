@@ -6,6 +6,8 @@ var numofcorn = 0
 var cash = 97
 
 # variables for tips
+var tutorial = true
+
 var first_time_buy = true
 var first_time_plant = true
 var first_time_harvest = true

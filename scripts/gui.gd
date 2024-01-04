@@ -9,6 +9,10 @@ func _ready():
 	$crop.visible = false
 	$money.visible = false
 	$tips.visible = false
+	if Main.tutorial:
+		$start/tips_color/Label.text = "tutorial: on"
+	else:
+		$start/tips_color/Label.text = "tutorial: off"
 	
 # run after game was started by pressing button
 func start_in_game_gui():
@@ -126,13 +130,39 @@ func showPlantTip():
 func showBuyTip():
 	if Main.first_time_buy and Main.ingame:
 		$tips/buy_seeds.visible = true
-		$tips/buy_seeds.text = "I should walk over and purchase some seeds from the shopkeeper"
+		$tips/buy_seeds.text = "I should purchase some seeds from the shopkeeper"
 	else:
 		$tips/buy_seeds.visible = false
 
 func showWinTip():
-	if not Main.first_time_objective and Main.first_time_win and Main.cash >= 100:
+	if not Main.first_time_objective and Main.cash >= 100:
 		$tips/win.visible = true
 		$tips/win.text = "We can now buy our retirement from the shopkeeper"
 	else:
 		$tips/win.visible = false
+
+
+func _on_tips_button_pressed():
+	if Main.tutorial:
+		Main.tutorial = false
+		$start/tips_color/Label.text = "tutorial: off"
+	else:
+		Main.tutorial = true
+		$start/tips_color/Label.text = "tutorial: on"
+	updateTutorial()
+
+func updateTutorial():
+	if Main.tutorial:
+		Main.first_time_buy = true
+		Main.first_time_plant = true
+		Main.first_time_harvest = true
+		Main.first_time_sell = true
+		Main.first_time_objective = true
+		Main.first_time_win = true
+	else:	
+		Main.first_time_buy = false
+		Main.first_time_plant = false
+		Main.first_time_harvest = false
+		Main.first_time_sell = false
+		Main.first_time_objective = false
+		Main.first_time_win = false
