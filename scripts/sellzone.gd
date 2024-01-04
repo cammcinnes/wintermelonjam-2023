@@ -7,6 +7,9 @@ func _on_area_2d_body_entered(body):
 		var wheat = Main.numofwheat
 		var money = Main.cash
 		
+		if Main.numofcorn > 0 or Main.numofwheat > 0:
+			Main.first_time_sell = false
+			
 		# sell corn
 		money += corn * 2
 		# sell wheat
@@ -18,6 +21,5 @@ func _on_area_2d_body_entered(body):
 		Main.cash = money
 		Main.numofcorn = corn
 		Main.numofwheat = wheat
-	
 		
 

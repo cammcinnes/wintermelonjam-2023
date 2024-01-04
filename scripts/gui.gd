@@ -3,10 +3,12 @@ extends CanvasLayer
 
 # only here so restart button Timer only appears once
 var singleTimer = true
+var singleObjectiveTimer = true
 # run on load
 func _ready():
 	$crop.visible = false
 	$money.visible = false
+	$tips.visible = false
 	
 # run after game was started by pressing button
 func start_in_game_gui():
@@ -25,11 +27,18 @@ func change_to_ingame_vis():
 	$crop.visible = true
 	$money.visible = true
 	$gameover.visible = false
+	$tips.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	update_gui_labels()
 	updatecash()
+	showBuyTip()
+	showPlantTip()
+	showHarvestTip()
+	showSellTip()
+	showObjectiveTip()
+	showWinTip()
 	if Main.gameover and singleTimer:
 		game_over_screen()
 		# start timer for restart button if hasn't already been started
@@ -66,11 +75,64 @@ func intializeItem():
 	Main.plantselected = 1
 	Main.numofwheat = 0
 	Main.numofcorn = 0
-	Main.cash = 100
+	Main.cash = 97
 
 # Makes the game over screen visible
 func game_over_screen():
 	$gameover.visible = true
+	$tips.visible = false
 	$gameover/end_screen.visible = true
 	$gameover/restart_button.visible = false
 	$gameover/end_screen.text = "You may finally rest..."
+
+# show objective until timer runs out on first playthrough
+func showObjectiveTip():
+	if not Main.first_time_sell and Main.first_time_objective:
+		$tips/objective.visible = true
+		if Main.cash < 100:
+			$tips/objective.text = "We only need $" + str(100 - Main.cash) + " until we can retire"
+		else:
+			$tips/objective.text = "Stop cheating!"
+		if singleObjectiveTimer:
+			$tips/Timer.start()
+			singleObjectiveTimer = false 
+	else:
+		$tips/objective.visible = false
+
+func _on_objective_timer_timeout():
+	Main.first_time_objective = false
+
+func showSellTip():
+	if not Main.first_time_harvest and Main.first_time_sell:
+		$tips/sell_seeds.visible = true
+		$tips/sell_seeds.text = "We can sell our crops by walking in front of the shopkeeper"
+	else:
+		$tips/sell_seeds.visible = false
+
+func showHarvestTip():
+	if not Main.first_time_plant and Main.first_time_harvest:
+		$tips/harvest_seeds.visible = true
+		$tips/harvest_seeds.text = "After our crops are fully grown we can left click them to harvest"
+	else:
+		$tips/harvest_seeds.visible = false
+
+func showPlantTip():
+	if not Main.first_time_buy and Main.first_time_plant:
+		$tips/plant_seeds.visible = true
+		$tips/plant_seeds.text = "Left click and drag the seeds to an open fertilized plot of land to plant them"
+	else:
+		$tips/plant_seeds.visible = false
+
+func showBuyTip():
+	if Main.first_time_buy and Main.ingame:
+		$tips/buy_seeds.visible = true
+		$tips/buy_seeds.text = "I should walk over and purchase some seeds from the shopkeeper"
+	else:
+		$tips/buy_seeds.visible = false
+
+func showWinTip():
+	if not Main.first_time_objective and Main.first_time_win and Main.cash >= 100:
+		$tips/win.visible = true
+		$tips/win.text = "We can now buy our retirement from the shopkeeper"
+	else:
+		$tips/win.visible = false

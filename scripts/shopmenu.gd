@@ -84,6 +84,7 @@ func swap_item_forward():
 		item = 1
 		
 func buy(i):
+	Main.first_time_buy = false
 	Main.cash -= price
 	if i == 1:
 		item1owned = true
@@ -94,6 +95,8 @@ func buy(i):
 		item2owned = true
 	if i == 4:
 		item4owned = true
+		Main.first_time_objective = false
+		Main.first_time_win = false
 
 #displays corn seed in item menu
 func switch_to_corn():

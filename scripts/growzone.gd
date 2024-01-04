@@ -23,6 +23,7 @@ func _physics_process(delta):
 
 func _on_area_2d_area_entered(area):
 	if not plantgrowing and not Main.onCooldown:
+		Main.first_time_plant = false
 		if plant == 1:
 			grow_corn()
 		if plant == 2:
@@ -59,6 +60,7 @@ func _on_wheat_grow_timer_timeout():
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("click"):
+		Main.first_time_harvest = false
 		if plant_grown:
 			if plant == 1:
 				harvest_corn()

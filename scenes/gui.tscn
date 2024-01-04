@@ -289,6 +289,91 @@ offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="tips" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+
+[node name="buy_seeds" type="Label" parent="tips"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "hey"
+theme_override_fonts/font = ExtResource("2_3mn8g")
+text = "Hmm.. maybe I should purchase some seeds from the shopkeeper"
+horizontal_alignment = 1
+
+[node name="plant_seeds" type="Label" parent="tips"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "hey"
+theme_override_fonts/font = ExtResource("2_3mn8g")
+horizontal_alignment = 1
+
+[node name="harvest_seeds" type="Label" parent="tips"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "hey"
+theme_override_fonts/font = ExtResource("2_3mn8g")
+horizontal_alignment = 1
+
+[node name="sell_seeds" type="Label" parent="tips"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "hey"
+theme_override_fonts/font = ExtResource("2_3mn8g")
+horizontal_alignment = 1
+
+[node name="objective" type="Label" parent="tips"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "hey"
+theme_override_fonts/font = ExtResource("2_3mn8g")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="tips"]
+wait_time = 30.0
+
+[node name="win" type="Label" parent="tips"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "hey"
+theme_override_fonts/font = ExtResource("2_3mn8g")
+horizontal_alignment = 1
+
 [connection signal="pressed" from="gameover/restart_button/restart2" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="gameover/Timer" to="." method="_on_end_timer_timeout"]
 [connection signal="pressed" from="start/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="tips/Timer" to="." method="_on_objective_timer_timeout"]
