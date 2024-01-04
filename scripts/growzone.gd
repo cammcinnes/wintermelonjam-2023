@@ -93,13 +93,13 @@ func harvest_corn():
 	Main.numofcorn += 1
 	plantgrowing = false
 	plant_grown = false
-	$hoed_land/Area2D.occupied = false
+	$hoed_land/can_grow.occupied = false
 	$plant.play("none")
 
 # get rid of wheat in grow zone and add money to player
 func harvest_wheat():
 	Main.numofwheat += 1
-	$hoed_land/Area2D.occupied = false
+	$hoed_land/can_grow.occupied = false
 	plantgrowing = false
 	plant_grown = false
 	$plant.play("none")

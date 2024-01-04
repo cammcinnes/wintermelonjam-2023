@@ -18,6 +18,8 @@ func _ready():
 	
 # run on start button being hit
 func start():
+	if $end.playing:
+		$end.stop()
 	self.visible = true
 	position = Vector2(320, 180)
 	$theme.play()
