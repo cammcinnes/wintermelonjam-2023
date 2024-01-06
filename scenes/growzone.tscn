@@ -125,6 +125,7 @@ wait_time = 8.0
 wait_time = 5.0
 
 [node name="cooldown" type="Timer" parent="."]
+wait_time = 3.0
 
 [connection signal="area_entered" from="hoed_land/can_grow" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="hoed_land/can_grow" to="." method="_on_area_2d_input_event"]
