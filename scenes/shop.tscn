@@ -70,7 +70,6 @@ sprite_frames = SubResource("SpriteFrames_h8byr")
 frame_progress = 0.996638
 
 [node name="shop_art" type="AnimatedSprite2D" parent="."]
-z_index = 1
 sprite_frames = SubResource("SpriteFrames_sa4km")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -25,6 +25,13 @@ var start = false
 var ingame = false
 var gameover = false
 
+#scene: farm or house
+var curr_scene = "farm"
+var transition_scene = false
+
+var previous_scene
+
+
 func game_over():
 	gameover = true
 	ingame = false

@@ -40,6 +40,7 @@ func _physics_process(delta):
 		update_animations()
 		
 		hasSlept = false
+	
 	else:
 		# gameover is true and haven't finalized yet; else do nothing
 		if not hasSlept:
@@ -97,8 +98,9 @@ func move_player():
 	
 	move_and_slide()
 
-	# Clamp the player's position to the screen boundaries
-	var new_position = position
-	new_position.x = clamp(new_position.x, 10, screen_size.x - 10)
-	new_position.y = clamp(new_position.y, 5, screen_size.y - 20)
-	position = new_position
+	## Clamp the player's position to the screen boundaries
+		#var new_position = position
+		#new_position.x = clamp(new_position.x, 10, screen_size.x - 10)
+		#new_position.y = clamp(new_position.y, 5, screen_size.y - 20)
+		#position = new_position
+
