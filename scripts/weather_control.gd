@@ -25,6 +25,10 @@ func _process(delta):
 		self.visible = false
 	elif curr_weather == "rain":
 		self.visible = true
+	if curr_weather == "rain" and Main.curr_scene == "house":
+		$rain_sound.set_volume_db(-20)
+	else:
+		$rain_sound.set_volume_db(-15)
 		
 
 #switch weather on timer if not in game_over screen
