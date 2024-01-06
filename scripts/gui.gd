@@ -171,6 +171,7 @@ func updateTutorial():
 		Main.first_time_sell = true
 		Main.first_time_objective = true
 		Main.first_time_win = true
+		Main.first_time_select = true
 	else:	
 		Main.first_time_buy = false
 		Main.first_time_plant = false
@@ -178,3 +179,4 @@ func updateTutorial():
 		Main.first_time_sell = false
 		Main.first_time_objective = false
 		Main.first_time_win = false
+		Main.first_time_select = false
