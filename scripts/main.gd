@@ -3,12 +3,15 @@ extends Node
 var plantselected = 1
 var numofwheat = 0
 var numofcorn = 0
-var cash = 97
+var numofwheatseed = 0
+var numofcornseed = 0
+var cash = 1
 
 # variables for tips
 var tutorial = true
 
 var first_time_buy = true
+var first_time_select = true
 var first_time_plant = true
 var first_time_harvest = true
 var first_time_sell = true

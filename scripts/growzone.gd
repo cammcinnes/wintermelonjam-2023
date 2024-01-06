@@ -22,14 +22,17 @@ func _physics_process(delta):
 
 
 func _on_area_2d_area_entered(area):
-	if not plantgrowing and not Main.onCooldown:
+	if not plantgrowing:
 		Main.first_time_plant = false
-		if plant == 1:
+		if plant == 1 and Main.numofcornseed > 0:
 			grow_corn()
-		if plant == 2:
+			Main.numofcornseed -= 1
+		if plant == 2 and Main.numofwheatseed > 0:
 			grow_wheat()
+			Main.numofwheatseed -= 1
 	else: 
 		pass
+			
 
 # change frames on timer timeout 5 sec intervals
 func _on_corn_grow_timer_timeout():
@@ -57,30 +60,12 @@ func _on_wheat_grow_timer_timeout():
 		wheat_plant.frame = 3
 		plant_grown = true
 
-
-func _on_area_2d_input_event(viewport, event, shape_idx):
-	if Input.is_action_just_pressed("click"):
-		Main.first_time_harvest = false
-		if plant_grown:
-			if plant == 1:
-				harvest_corn()
-			if plant == 2:
-				harvest_wheat()
-			else:
-				pass
-				
-
-
-func _on_cooldown_timeout():
-	Main.onCooldown = false
-
 # start corn timer and show growth
 func grow_corn():
 	plantgrowing = true
 	$corn_grow_timer.start()
 	$plant.play("corn_grow")
 	Main.onCooldown = true
-	$cooldown.start()
 	
 # start wheat timer and show growth
 func grow_wheat():
@@ -88,7 +73,6 @@ func grow_wheat():
 	$wheat_grow_timer.start()
 	$plant.play("wheat_grow")
 	Main.onCooldown = true
-	$cooldown.start()
 
 # get rid of corn in grow zone and add money to player
 func harvest_corn():
@@ -105,3 +89,15 @@ func harvest_wheat():
 	plantgrowing = false
 	plant_grown = false
 	$plant.play("none")
+
+
+func _on_can_grow_body_entered(body):
+	if body.has_method("move_player"):
+		Main.first_time_harvest = false
+		if plant_grown:
+			if plant == 1:
+				harvest_corn()
+			if plant == 2:
+				harvest_wheat()
+			else:
+				pass

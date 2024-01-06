@@ -46,12 +46,10 @@ func _on_buy_button_pressed():
 	if item == 1:
 		price = item1price
 		if Main.cash >= price:
-			if item1owned == false:
 				buy(1)
 	elif item == 2:
 		price = item2price
 		if Main.cash >= price:
-			if item2owned == false:
 				buy(2)
 	elif item == 3 and not usedcharm:
 		price = item3price
@@ -88,11 +86,14 @@ func buy(i):
 	Main.cash -= price
 	if i == 1:
 		item1owned = true
+		Main.numofcornseed += 1
 	if i == 2:
 		item2owned = true
+		Main.numofwheatseed += 1
 	if i == 3:
 		usedcharm = true
 		item2owned = true
+		Main.numofwheatseed += 1
 	if i == 4:
 		item4owned = true
 		Main.first_time_objective = false

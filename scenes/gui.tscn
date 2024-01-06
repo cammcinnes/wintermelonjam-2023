@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpqxfe6ebfb4d"]
+[gd_scene load_steps=13 format=3 uid="uid://bpqxfe6ebfb4d"]
 
 [ext_resource type="Script" path="res://scripts/gui.gd" id="1_ba3st"]
 [ext_resource type="Texture2D" uid="uid://dyf1tq5uyr27v" path="res://textures/Crop_Spritesheet.png" id="1_dfwng"]
@@ -21,9 +21,17 @@ region = Rect2(32, 128, 16, 16)
 atlas = ExtResource("1_dfwng")
 region = Rect2(0, 144, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypkl8"]
+atlas = ExtResource("1_dfwng")
+region = Rect2(80, 144, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mitdf"]
 atlas = ExtResource("1_dfwng")
 region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmksw"]
+atlas = ExtResource("1_dfwng")
+region = Rect2(80, 80, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s12vm"]
 animations = [{
@@ -51,11 +59,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ypkl8")
+}],
+"loop": true,
+"name": &"corn_seed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mitdf")
 }],
 "loop": true,
 "name": &"wheat",
 "speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmksw")
+}],
+"loop": true,
+"name": &"wheat_seed",
+"speed": 5.0
 }]
 
 [node name="GUI" type="CanvasLayer"]
@@ -124,6 +148,40 @@ offset_left = 16.0
 offset_top = 9.0
 offset_right = 56.0
 offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("2_3mn8g")
+theme_override_font_sizes/font_size = 16
+text = ": 1"
+horizontal_alignment = 1
+
+[node name="wheat_seed" type="AnimatedSprite2D" parent="money"]
+position = Vector2(131, 17)
+sprite_frames = SubResource("SpriteFrames_s12vm")
+animation = &"wheat_seed"
+autoplay = "wheat_seed"
+
+[node name="wheat_seed_label" type="Label" parent="money"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 10.0
+offset_right = 168.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_3mn8g")
+theme_override_font_sizes/font_size = 16
+text = ": 1"
+horizontal_alignment = 1
+
+[node name="corn_seed" type="AnimatedSprite2D" parent="money"]
+position = Vector2(75, 17)
+sprite_frames = SubResource("SpriteFrames_s12vm")
+animation = &"corn_seed"
+autoplay = "corn_seed"
+
+[node name="corn_seed_label" type="Label" parent="money"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 10.0
+offset_right = 112.0
+offset_bottom = 32.0
 theme_override_fonts/font = ExtResource("2_3mn8g")
 theme_override_font_sizes/font_size = 16
 text = ": 1"
@@ -358,6 +416,17 @@ grow_vertical = 2
 tooltip_text = "hey"
 theme_override_fonts/font = ExtResource("2_3mn8g")
 text = "Hmm.. maybe I should purchase some seeds from the shopkeeper"
+horizontal_alignment = 1
+
+[node name="select_seeds" type="Label" parent="tips"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "hey"
+theme_override_fonts/font = ExtResource("2_3mn8g")
 horizontal_alignment = 1
 
 [node name="plant_seeds" type="Label" parent="tips"]

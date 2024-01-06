@@ -22,6 +22,8 @@ func start_in_game_gui():
 func add_text_to_ingame_gui():
 	$crop/wheat_label.text = ": 0"
 	$crop/corn_label.text = ": 0"
+	$money/wheat_seed_label.text = ": 0"
+	$money/corn_seed_label.text = ": 0"
 	$money/cash_label.text = ": 0"
 	$gameover/end_screen.text = ""
 
@@ -38,6 +40,7 @@ func _process(delta):
 	update_gui_labels()
 	updatecash()
 	showBuyTip()
+	showSelectTip()
 	showPlantTip()
 	showHarvestTip()
 	showSellTip()
@@ -53,6 +56,8 @@ func _process(delta):
 func update_gui_labels():
 	$crop/wheat_label.text = ": " + str(Main.numofwheat)
 	$crop/corn_label.text = ": " + str(Main.numofcorn)
+	$money/wheat_seed_label.text = ": " + str(Main.numofwheatseed)
+	$money/corn_seed_label.text = ": " + str(Main.numofcornseed)
 	$money/cash_label.text = ": " + str(Main.cash)
 
 func updatecash():
@@ -79,7 +84,7 @@ func intializeItem():
 	Main.plantselected = 1
 	Main.numofwheat = 0
 	Main.numofcorn = 0
-	Main.cash = 97
+	Main.cash = 1
 
 # Makes the game over screen visible
 func game_over_screen():
@@ -116,14 +121,21 @@ func showSellTip():
 func showHarvestTip():
 	if not Main.first_time_plant and Main.first_time_harvest:
 		$tips/harvest_seeds.visible = true
-		$tips/harvest_seeds.text = "After our crops are fully grown we can left click them to harvest"
+		$tips/harvest_seeds.text = "After our crops are fully grown we can walk over them to harvest"
 	else:
 		$tips/harvest_seeds.visible = false
+		
+func showSelectTip():
+	if not Main.first_time_buy and Main.first_time_select:
+		$tips/select_seeds.visible = true
+		$tips/select_seeds.text = "Press 1 to select purchased corn seeds, Press 2 to select purchased wheat seeds"
+	else:
+		$tips/select_seeds.visible = false
 
 func showPlantTip():
-	if not Main.first_time_buy and Main.first_time_plant:
+	if not Main.first_time_select and Main.first_time_plant:
 		$tips/plant_seeds.visible = true
-		$tips/plant_seeds.text = "Left click and drag the seeds to an open fertilized plot of land to plant them"
+		$tips/plant_seeds.text = "Hover your cursor with a seed type selected over an open fertilized plot of land to plant them"
 	else:
 		$tips/plant_seeds.visible = false
 

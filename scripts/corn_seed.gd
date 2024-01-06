@@ -10,25 +10,25 @@ func _ready():
 
 func _physics_process(delta):
 	if selected:
-		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
+		global_position = get_global_mouse_position()
+	if Main.numofcornseed <= 0:
+		self.visible = false
+		selected = false
 
-
-# select with mouse cursor
-func _on_area_2d_input_event(viewport, event, shape_idx):
-	if Input.is_action_just_pressed("click"):
-		Main.plantselected = seed_type
-		selected = true
-
-# select with a left click
+# select corn seed to plant
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == 1 and not event.pressed:
+	if Input.is_action_just_pressed("select_corn"):
+		if not selected:
+			if not Main.first_time_buy:
+				Main.first_time_select = false
+			Main.plantselected = seed_type
+			self.visible = true
+			selected = true
+		else:
+			self.visible = false
 			selected = false
-		
 
 # add plant to grow zone if not occupied
 func _on_area_2d_body_entered(body):
 	if body.has_method("can_grow") and not body.occupied:
-		selected = false
-		planted = true
 		body.occupied = true
