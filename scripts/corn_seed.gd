@@ -19,7 +19,7 @@ func _physics_process(delta):
 # select corn seed to plant
 func _input(event):
 	if Input.is_action_just_pressed("select_corn"):
-		if not selected:
+		if not selected and not Main.wheat_selected:
 			if not Main.first_time_buy:
 				Main.first_time_select = false
 			Main.plantselected = seed_type
