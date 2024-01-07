@@ -23,7 +23,6 @@ func _physics_process(delta):
 
 func _on_area_2d_area_entered(area):
 	if not plantgrowing:
-		Main.first_time_plant = false
 		if plant == 1 and Main.numofcornseed > 0:
 			grow_corn()
 			Main.numofcornseed -= 1
@@ -46,6 +45,7 @@ func _on_corn_grow_timer_timeout():
 	elif corn_plant.frame == 2:
 		corn_plant.frame = 3
 		plant_grown = true
+		Main.first_time_plant = false
 
 # change frames on timer timeout 8sec intervals
 func _on_wheat_grow_timer_timeout():
@@ -59,6 +59,7 @@ func _on_wheat_grow_timer_timeout():
 	elif wheat_plant.frame == 2:
 		wheat_plant.frame = 3
 		plant_grown = true
+		Main.first_time_plant = false
 
 # start corn timer and show growth
 func grow_corn():
@@ -93,7 +94,8 @@ func harvest_wheat():
 
 func _on_can_grow_body_entered(body):
 	if body.has_method("move_player"):
-		Main.first_time_harvest = false
+		if not Main.first_time_plant:
+			Main.first_time_harvest = false
 		if plant_grown:
 			if plant == 1:
 				harvest_corn()

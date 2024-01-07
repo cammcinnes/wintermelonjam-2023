@@ -135,7 +135,7 @@ func showSelectTip():
 func showPlantTip():
 	if not Main.first_time_select and Main.first_time_plant:
 		$tips/plant_seeds.visible = true
-		$tips/plant_seeds.text = "Hover your cursor with a seed type selected over an open fertilized plot of land to plant them"
+		$tips/plant_seeds.text = "Hover your cursor with a seed selected over an open fertilized plot of land to plant them"
 	else:
 		$tips/plant_seeds.visible = false
 

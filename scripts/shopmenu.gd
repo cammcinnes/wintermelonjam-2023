@@ -53,8 +53,7 @@ func _on_buy_button_pressed():
 				buy(2)
 	elif item == 3 and not usedcharm:
 		price = item3price
-		if item2owned == false:
-			buy(3)
+		buy(3)
 	elif item == 4:
 		price = item4price
 		if Main.cash >= price:
