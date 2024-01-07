@@ -15,6 +15,7 @@ func _physics_process(delta):
 	if Main.numofwheatseed <= 0:
 		self.visible = false
 		selected = false
+	Main.wheat_selected = selected
 
 
 # select wheat seed to plant

@@ -7,6 +7,9 @@ var numofwheatseed = 0
 var numofcornseed = 0
 var cash = 1
 
+var corn_selected = false
+var wheat_selected = false
+
 # variables for tips
 var tutorial = true
 

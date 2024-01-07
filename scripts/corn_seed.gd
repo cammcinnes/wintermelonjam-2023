@@ -14,6 +14,7 @@ func _physics_process(delta):
 	if Main.numofcornseed <= 0:
 		self.visible = false
 		selected = false
+	Main.corn_selected = selected
 
 # select corn seed to plant
 func _input(event):

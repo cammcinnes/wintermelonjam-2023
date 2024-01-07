@@ -34,6 +34,8 @@ func change_to_ingame_vis():
 	$money.visible = true
 	$gameover.visible = false
 	$tips.visible = true
+	$tips/corn_seed_rect.visible = false
+	$tips/wheat_seed_rect.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -46,6 +48,7 @@ func _process(delta):
 	showSellTip()
 	showObjectiveTip()
 	showWinTip()
+	updateSelectBox()
 	if Main.gameover and singleTimer:
 		game_over_screen()
 		# start timer for restart button if hasn't already been started
@@ -180,3 +183,13 @@ func updateTutorial():
 		Main.first_time_objective = false
 		Main.first_time_win = false
 		Main.first_time_select = false
+
+func updateSelectBox():
+	if Main.corn_selected:
+		$tips/corn_seed_rect.visible = true
+	else:
+		$tips/corn_seed_rect.visible = false
+	if Main.wheat_selected:
+		$tips/wheat_seed_rect.visible = true
+	else:
+		$tips/wheat_seed_rect.visible = false
