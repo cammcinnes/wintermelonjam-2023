@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cb3qy17ughuh1" path="res://textures/objects/objects.png" id="1_ji3lo"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_y3225"]
 [ext_resource type="Texture2D" uid="uid://duxbbgyusmoma" path="res://textures/characters/NPCS V1/NPCS.png" id="2_tu0pg"]
-[ext_resource type="PackedScene" uid="uid://cokkreqcbdqxr" path="res://scenes/wheat_seed.tscn" id="4_heb2f"]
-[ext_resource type="PackedScene" uid="uid://cp4u61uqr1liu" path="res://scenes/corn_seed.tscn" id="5_5whsl"]
-[ext_resource type="PackedScene" uid="uid://br4yf88hm83rj" path="res://scenes/shopmenu.tscn" id="6_db0lp"]
-[ext_resource type="PackedScene" uid="uid://cq4ibfmuyjkio" path="res://scenes/sellzone.tscn" id="7_tcxuq"]
+[ext_resource type="PackedScene" uid="uid://cokkreqcbdqxr" path="res://scenes/farming/wheat_seed.tscn" id="4_heb2f"]
+[ext_resource type="PackedScene" uid="uid://cp4u61uqr1liu" path="res://scenes/farming/corn_seed.tscn" id="5_5whsl"]
+[ext_resource type="PackedScene" uid="uid://br4yf88hm83rj" path="res://scenes/hud/shopmenu.tscn" id="6_db0lp"]
+[ext_resource type="PackedScene" uid="uid://cq4ibfmuyjkio" path="res://scenes/farming/sellzone.tscn" id="7_tcxuq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxysw"]
 atlas = ExtResource("2_tu0pg")

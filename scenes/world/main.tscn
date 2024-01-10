@@ -1,7 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://byh5danmly2j4"]
+[gd_scene load_steps=40 format=3 uid="uid://byh5danmly2j4"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_0tnjh"]
-[ext_resource type="PackedScene" uid="uid://c564ni2iq5e7f" path="res://scenes/player.tscn" id="1_x8416"]
+[ext_resource type="PackedScene" uid="uid://c564ni2iq5e7f" path="res://scenes/characters/player.tscn" id="1_x8416"]
 [ext_resource type="Script" path="res://scripts/main_area.gd" id="2_ywghn"]
 [ext_resource type="Texture2D" uid="uid://bippumgflsxg7" path="res://textures/tilesets/plains.png" id="3_nyd0c"]
 [ext_resource type="Texture2D" uid="uid://bh4sv7lhmvf1a" path="res://textures/tilesets/grass.png" id="3_viwpl"]
@@ -13,12 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://dyf1tq5uyr27v" path="res://textures/Crop_Spritesheet.png" id="9_3fsbu"]
 [ext_resource type="Texture2D" uid="uid://dfyogm0687yw4" path="res://textures/tilesets/walls/wooden_door.png" id="9_o5by2"]
 [ext_resource type="Texture2D" uid="uid://bs4088fk6lx1p" path="res://textures/tilesets/walls/wooden_door_b.png" id="11_ea4yo"]
-[ext_resource type="PackedScene" uid="uid://xaq1g1rn45ww" path="res://scenes/growzone.tscn" id="12_2jnoe"]
+[ext_resource type="PackedScene" uid="uid://xaq1g1rn45ww" path="res://scenes/farming/growzone.tscn" id="12_2jnoe"]
 [ext_resource type="Texture2D" uid="uid://rjbesw32thmw" path="res://textures/Free Chill Harvest-Farm/sprites/buildings_all.png" id="12_p27op"]
-[ext_resource type="PackedScene" uid="uid://bpqxfe6ebfb4d" path="res://scenes/gui.tscn" id="13_qxv7o"]
-[ext_resource type="PackedScene" uid="uid://c6eb67wri0gno" path="res://scenes/weather_control.tscn" id="14_3fx2f"]
-[ext_resource type="PackedScene" uid="uid://bulcl0h7qdvqb" path="res://scenes/shop.tscn" id="15_7x6fa"]
-[ext_resource type="PackedScene" uid="uid://c4p5kygxoklgp" path="res://scenes/house_scene.tscn" id="19_cjt8j"]
+[ext_resource type="PackedScene" uid="uid://bpqxfe6ebfb4d" path="res://scenes/hud/gui.tscn" id="13_qxv7o"]
+[ext_resource type="PackedScene" uid="uid://c6eb67wri0gno" path="res://scenes/world/weather_control.tscn" id="14_3fx2f"]
+[ext_resource type="PackedScene" uid="uid://bulcl0h7qdvqb" path="res://scenes/hud/shop.tscn" id="15_7x6fa"]
+[ext_resource type="PackedScene" uid="uid://c4p5kygxoklgp" path="res://scenes/world/house_scene.tscn" id="19_cjt8j"]
+[ext_resource type="PackedScene" uid="uid://d0efsvd1jxcdx" path="res://scenes/world/night.tscn" id="20_2e1sy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tk8pw"]
 texture = ExtResource("3_viwpl")
@@ -1351,6 +1352,9 @@ z_index = 1
 tile_set = SubResource("TileSet_ykb2o")
 format = 2
 layer_0/tile_data = PackedInt32Array(327714, 458752, 0)
+
+[node name="night" parent="main_area" instance=ExtResource("20_2e1sy")]
+z_index = 3
 
 [node name="start_position" type="Marker2D" parent="main_area"]
 position = Vector2(320, 180)
