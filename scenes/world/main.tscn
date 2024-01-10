@@ -1353,9 +1353,6 @@ tile_set = SubResource("TileSet_ykb2o")
 format = 2
 layer_0/tile_data = PackedInt32Array(327714, 458752, 0)
 
-[node name="night" parent="main_area" instance=ExtResource("20_2e1sy")]
-z_index = 3
-
 [node name="start_position" type="Marker2D" parent="main_area"]
 position = Vector2(320, 180)
 
@@ -1600,9 +1597,6 @@ position = Vector2(17, 0)
 [node name="growzone4" parent="main_area/plot/growzone6/growzone2/growzone3" instance=ExtResource("12_2jnoe")]
 position = Vector2(17, 0)
 
-[node name="shop" parent="main_area" instance=ExtResource("15_7x6fa")]
-position = Vector2(326, 71)
-
 [node name="house_entrance" type="Area2D" parent="main_area"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="main_area/house_entrance"]
@@ -1630,6 +1624,12 @@ position = Vector2(319, -180)
 position = Vector2(568, 157)
 
 [node name="weather_control" parent="." instance=ExtResource("14_3fx2f")]
+
+[node name="night" parent="." instance=ExtResource("20_2e1sy")]
+z_index = 3
+
+[node name="shop" parent="." instance=ExtResource("15_7x6fa")]
+position = Vector2(326, 71)
 
 [node name="GUI" parent="." instance=ExtResource("13_qxv7o")]
 

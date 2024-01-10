@@ -14,7 +14,7 @@ func _ready():
 	if state == "day":
 		$ColorRect.color.a = 0
 	elif state == "night":
-		$ColorRect.color.a = 165
+		$ColorRect.color.a = 0
 
 func _on_timer_timeout():
 	if state == "day":
@@ -28,6 +28,7 @@ func _process(delta):
 	if Main.ingame:
 		self.visible = true
 		if not started:
+			$Timer.wait_time = length_of_day
 			$Timer.start()
 			started = true
 		if change_state:
