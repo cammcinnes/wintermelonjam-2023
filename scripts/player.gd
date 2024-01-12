@@ -90,11 +90,12 @@ func move_player():
 	Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 	Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	)
-	velocity = input_direction * speed
-
+	
 	# Update direction based on input
 	if input_direction.length_squared() > 0:
 		direction = input_direction.normalized()
+	
+	velocity = input_direction.normalized() * speed
 	
 	move_and_slide()
 
