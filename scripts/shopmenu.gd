@@ -20,7 +20,7 @@ func _ready():
 	$buy_button_color.color = "ff00147b" #red
 	$buy_label.text = "buy"
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Main.start:
 		item = 1
 	if self.visible == true:

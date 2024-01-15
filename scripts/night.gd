@@ -24,7 +24,7 @@ func _on_timer_timeout():
 		
 	change_state = true
 
-func _process(delta):
+func _process(_delta):
 	if Main.ingame:
 		self.visible = true
 		if not started:

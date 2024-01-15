@@ -13,6 +13,7 @@ var hasSlept = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	$AnimatedSprite2D.play("idle")
 	direction = DOWN
 	self.visible = false
 	
@@ -27,7 +28,7 @@ func start():
 	$AnimatedSprite2D.play("idle")
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# check if game is running and hasn't already started before
 	if Main.start:
 		start()

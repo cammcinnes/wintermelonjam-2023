@@ -7,7 +7,7 @@ func _ready():
 	$corn_seed.visible = false
 	$wheat_seed.visible = false
 	
-func _process(delta):
+func _process(_delta):
 	if Main.ingame:
 		self.visible = true
 	if $shopmenu.item4owned == true:

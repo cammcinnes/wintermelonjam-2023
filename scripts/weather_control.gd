@@ -16,7 +16,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	Main.weather = curr_weather
 	if Main.ingame and not initialize:
 		$Timer.start()

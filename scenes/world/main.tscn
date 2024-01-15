@@ -1612,16 +1612,15 @@ offset = Vector2(320, 180)
 [node name="house_scene" type="Camera2D" parent="main_area"]
 offset = Vector2(320, -195)
 
-[node name="player" parent="main_area" instance=ExtResource("1_x8416")]
-z_index = 1
-position = Vector2(322, 176)
-speed = 125
-
 [node name="house_load_pos" type="Marker2D" parent="main_area"]
 position = Vector2(319, -180)
 
 [node name="farm_load_pos" type="Marker2D" parent="main_area"]
 position = Vector2(568, 157)
+
+[node name="player" parent="main_area" instance=ExtResource("1_x8416")]
+position = Vector2(321, 181)
+speed = 100
 
 [node name="weather_control" parent="." instance=ExtResource("14_3fx2f")]
 
